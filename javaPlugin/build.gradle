@@ -1,0 +1,31 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+}
+
+def pluginId = 'java-standalone-plugin'
+def pluginImplementationClass = 'com.example.javaplugin.JavPlugin'
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = pluginId
+            implementationClass = pluginImplementationClass
+        }
+    }
+}
+
+group = 'com.example.javaplugin'
+version = '1.1'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifactId = pluginId
+            from components.java
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}

@@ -1,0 +1,25 @@
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == 'com.example.javaplugin') {
+                useModule("com.example.javaplugin:java-standalone-plugin:${requested.version}")
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "TestPluginJava"
+include ':app'
+include ':javaPlugin'
